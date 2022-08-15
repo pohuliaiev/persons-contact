@@ -1,6 +1,8 @@
 <div class="loading d-none"></div>
 <h1 class="text-center">Persons admin page</h1>
-<button class="btn btn-primary">Add User</button>
+<button class="btn btn-primary adding-user">Add User</button>
+<?php global $wpdb; 
+$users = $wpdb->get_results( "SELECT * FROM `demo_plugin_users`");?>
 <table class="table">
   <thead>
     <tr>
@@ -12,31 +14,17 @@
       <th scope="col">Delete user</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="tbody">
+    <?php foreach($users as $user){?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>info@mail.com</td>
+      <th scope="row"><?php echo $user->demo_id;?></th>
+      <td><?php echo $user->demo_name;?></td>
+      <td><?php echo $user->user_email;?></td>
       <td><button class="btn btn-primary users-edit">Edit user</button></td>
       <td><button class="btn btn-primary">User's contacts</button></td>
       <td><button class="btn btn-danger">Delete</button></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>info@mail.com</td>
-      <td><button class="btn btn-primary">Edit user</button></td>
-      <td><button class="btn btn-primary">User's contacts</button></td>
-      <td><button class="btn btn-danger">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Jacob</td>
-      <td>info@mail.com</td>
-      <td><button class="btn btn-primary">Edit user</button></td>
-      <td><button class="btn btn-primary">User's contacts</button></td>
-      <td><button class="btn btn-danger">Delete</button></td>
-    </tr>
+    <?php }?>
   </tbody>
 </table>
 
