@@ -64,7 +64,9 @@ class Persons_Contact_Run{
 	 * @return	void
 	 */
 	public function enqueue_backend_scripts_and_styles() {
+		wp_enqueue_style( 'perscont-bootstrap-styles', PERSCONT_PLUGIN_URL . 'core/includes/assets/css/bootstrap.min.css', array(), PERSCONT_VERSION, 'all' );
 		wp_enqueue_style( 'perscont-backend-styles', PERSCONT_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), PERSCONT_VERSION, 'all' );
+		wp_enqueue_script( 'perscont-bootstrap-scripts', PERSCONT_PLUGIN_URL . 'core/includes/assets/js/bootstrap.bundle.js', array(), PERSCONT_VERSION, false );
 		wp_enqueue_script( 'perscont-backend-scripts', PERSCONT_PLUGIN_URL . 'core/includes/assets/js/backend-scripts.js', array(), PERSCONT_VERSION, false );
 		wp_localize_script( 'perscont-backend-scripts', 'perscont', array(
 			'plugin_name'   	=> __( PERSCONT_NAME, 'persons-contact' ),

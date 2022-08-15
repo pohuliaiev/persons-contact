@@ -33,6 +33,22 @@ class Persons_Contact_Settings{
 	function __construct(){
 
 		$this->plugin_name = PERSCONT_NAME;
+		add_action('admin_menu', 'persons_plugin_setup_menu');
+	function persons_plugin_setup_menu(){
+		add_menu_page( 'Persons', 'Persons', 'manage_options', 'persons-contact', 'persons_admin' );
+	}
+
+	function persons_register_settings(){
+		register_setting(
+			'persons_plugin_settings',
+			'persons_plugin_settings',
+			'persons_validate_plugin_settings'
+		);
+	}
+	function persons_admin(){
+		//include PERSCONT_PLUGIN_URL . 'templates/persons.php';
+		require_once(dirname(__FILE__) . '/templates/persons.php');
+	} 
 	}
 
 	/**

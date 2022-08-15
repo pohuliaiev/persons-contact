@@ -25,3 +25,4 @@ class Persons_Contact_Helpers{
 	 */
 
 }
+require_once dirname(__FILE__) . "/plugin-parts/ajax-call.php"; 
