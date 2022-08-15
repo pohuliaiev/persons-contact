@@ -1,6 +1,11 @@
 /*----------------- 
 Backend related CSS
 -----------------*/
+.fields-row {
+  display: flex;
+  gap: 5px;
+}
+
 .loading {
   position: fixed;
   z-index: 999;

@@ -37,6 +37,23 @@ class Persons_Contact_Settings{
 	function persons_plugin_setup_menu(){
 		add_menu_page( 'Persons', 'Persons', 'manage_options', 'persons-contact', 'persons_admin' );
 	}
+	function user_contacts_page()
+{
+	add_submenu_page(
+		'persons-contact',
+		'',
+		'',
+		'manage_options',
+		'persons-contact-page',
+		'persons_contact_page'
+	);
+//	remove_submenu_page('persons-contact','persons-contact-page');
+}
+add_action('admin_menu', 'user_contacts_page'); 
+
+function persons_contact_page(){
+	require_once(dirname(__FILE__) . '/templates/contacts.php');
+}
 
 	function persons_register_settings(){
 		register_setting(
@@ -48,7 +65,8 @@ class Persons_Contact_Settings{
 	function persons_admin(){
 		//include PERSCONT_PLUGIN_URL . 'templates/persons.php';
 		require_once(dirname(__FILE__) . '/templates/persons.php');
-	} 
+	}
+	
 	}
 
 	/**

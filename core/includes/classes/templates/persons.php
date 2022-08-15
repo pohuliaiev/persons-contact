@@ -2,7 +2,8 @@
 <h1 class="text-center">Persons admin page</h1>
 <button class="btn btn-primary adding-user">Add User</button>
 <?php global $wpdb; 
-$users = $wpdb->get_results( "SELECT * FROM `demo_plugin_users`");?>
+$users = $wpdb->get_results( "SELECT * FROM `demo_plugin_users`
+WHERE user_show = 1;");?>
 <table class="table">
   <thead>
     <tr>
@@ -16,13 +17,14 @@ $users = $wpdb->get_results( "SELECT * FROM `demo_plugin_users`");?>
   </thead>
   <tbody id="tbody">
     <?php foreach($users as $user){?>
-    <tr>
+    <tr id="<?php echo $user->demo_id;?>">
       <th scope="row"><?php echo $user->demo_id;?></th>
-      <td><?php echo $user->demo_name;?></td>
-      <td><?php echo $user->user_email;?></td>
-      <td><button class="btn btn-primary users-edit">Edit user</button></td>
-      <td><button class="btn btn-primary">User's contacts</button></td>
-      <td><button class="btn btn-danger">Delete</button></td>
+      <td class="name"><?php echo $user->demo_name;?></td>
+      <td class="email"><?php echo $user->user_email;?></td>
+      <td><button class="btn btn-primary users-edit" data-user="<?php echo $user->demo_id;?>">Edit user</button></td>
+      <td><a href="admin.php?page=persons-contact-page&user=<?php echo $user->demo_id;?>" class="btn btn-primary"
+          target="_blank">User's contacts</a></td>
+      <td><button class="btn btn-danger user-delete" data-user="<?php echo $user->demo_id;?>">Delete</button></td>
     </tr>
     <?php }?>
   </tbody>
