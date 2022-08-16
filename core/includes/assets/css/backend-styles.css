@@ -5,7 +5,9 @@ Backend related CSS
   display: flex;
   gap: 5px;
 }
-
+li#toplevel_page_persons-contact ul.wp-submenu > li:nth-child(3) {
+  display: none;
+}
 .loading {
   position: fixed;
   z-index: 999;
